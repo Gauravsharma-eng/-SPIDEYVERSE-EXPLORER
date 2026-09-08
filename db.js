@@ -1,13 +1,12 @@
 // db.js
-// A tiny synchronous JSON-file "database". No native modules, no external
-// services — works anywhere Node runs. Swap for MongoDB (mongoose) or MySQL
-// (mysql2) later; every route only touches the functions exported here, so
-// that's the one file you'd need to change. See README.md for notes.
+// A tiny synchronous JSON-file "database" configured for Vercel (/tmp storage fallback).
 
 const fs = require('fs');
 const path = require('path');
 
-const DATA_FILE = path.join(__dirname, 'data', 'store.json');
+// Vercel has a read-only filesystem except for the /tmp directory
+const DATA_DIR = process.env.VERCEL ? '/tmp/data' : path.join(__dirname, 'data');
+const DATA_FILE = path.join(DATA_DIR, 'store.json');
 
 const DEFAULT_DATA = {
   characters: [
@@ -52,7 +51,7 @@ const DEFAULT_DATA = {
       role: 'hero',
       powerLevel: 82,
       abilities: ['Wall-crawling', 'Acrobatics', 'Musical drumming', 'Web-slinging'],
-      bio: 'A gifted drummer and detective\u2019s daughter who became her world\u2019s spider-powered protector, moving with dancer-like precision.',
+      bio: 'A gifted drummer and detective’s daughter who became her world’s spider-powered protector, moving with dancer-like precision.',
       image: 'https://image.tmdb.org/t/p/w780/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg'
     },
     {
@@ -150,8 +149,8 @@ const DEFAULT_DATA = {
     },
     {
       id: 2,
-      title: 'Warehouse break-in, Hell\u2019s Kitchen',
-      location: 'Hell\u2019s Kitchen, NYC',
+      title: 'Warehouse break-in, Hell’s Kitchen',
+      location: 'Hell’s Kitchen, NYC',
       threatLevel: 'High',
       status: 'Pending',
       description: 'Reports of unusual energy readings from a disused warehouse near 10th Ave.',
@@ -172,8 +171,9 @@ const DEFAULT_DATA = {
 };
 
 function ensureFile() {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
   if (!fs.existsSync(DATA_FILE)) {
     fs.writeFileSync(DATA_FILE, JSON.stringify(DEFAULT_DATA, null, 2));
   }
@@ -186,6 +186,7 @@ function readData() {
 }
 
 function writeData(data) {
+  ensureFile();
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
