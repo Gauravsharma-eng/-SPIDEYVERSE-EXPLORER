@@ -19,7 +19,7 @@ const DEFAULT_DATA = {
       powerLevel: 88,
       abilities: ['Wall-crawling', 'Enhanced strength', 'Danger sense', 'Web-slinging'],
       bio: 'A science-minded photographer bitten by a radioactive spider, balancing everyday life in Queens with a nightly patrol over Manhattan.',
-      image: 'https://image.tmdb.org/t/p/w780/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg'
+      image: 'https://i.pinimg.com/originals/e8/41/76/e84176b926d840ced3b73a6df22f0260.jpg'
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const DEFAULT_DATA = {
       powerLevel: 93,
       abilities: ['Retractable spider-arms', 'Nanotech self-repair', 'Enhanced durability', 'Glide flaps'],
       bio: 'A Stark-engineered nanotech upgrade of the classic suit, with four mechanical spider-arms and gold-plated armor panels.',
-      image: 'https://image.tmdb.org/t/p/w780/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg'
+      image: 'https://wallpaperaccess.com/full/1653533.jpg'
     },
     {
       id: 3,
@@ -52,7 +52,7 @@ const DEFAULT_DATA = {
       powerLevel: 82,
       abilities: ['Wall-crawling', 'Acrobatics', 'Musical drumming', 'Web-slinging'],
       bio: 'A gifted drummer and detective’s daughter who became her world’s spider-powered protector, moving with dancer-like precision.',
-      image: 'https://image.tmdb.org/t/p/w780/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg'
+      image: 'https://i.pinimg.com/736x/13/bb/30/13bb30247b92f9581c6f3d6c2306e7ae.jpg'
     },
     {
       id: 5,
@@ -74,7 +74,7 @@ const DEFAULT_DATA = {
       powerLevel: 78,
       abilities: ['Superhuman strength', 'Glider combat', 'Pumpkin bombs', 'Genius intellect'],
       bio: 'A brilliant industrialist whose experimental serum unlocked strength and stamina alongside violent instability.',
-      image: 'https://image.tmdb.org/t/p/w780/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg'
+      image: 'https://tse4.mm.bing.net/th/id/OIP.0LWrWGqqCnF8fiokYftKXwHaEK?r=0&pid=Api&P=0&h=180'
     },
     {
       id: 7,
@@ -85,7 +85,7 @@ const DEFAULT_DATA = {
       powerLevel: 80,
       abilities: ['Mechanical tentacle arms', 'Genius-level intellect', 'Enhanced durability'],
       bio: 'A nuclear physicist fused with four mechanical arms after a lab accident, driven by ambition and wounded pride.',
-      image: 'https://image.tmdb.org/t/p/w780/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg'
+      image: 'https://tse2.mm.bing.net/th/id/OIP.sd0maR6K6d_KHKMkDjYF3wHaEK?r=0&pid=Api&P=0&h=180'
     }
   ],
 
