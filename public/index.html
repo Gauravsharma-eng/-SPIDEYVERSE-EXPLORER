@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SpideyVerse Explorer &amp; Mission Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="web-overlay" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◈</span>
+    <span class="brand-text">SPIDEYVERSE <span>EXPLORER</span></span>
+  </div>
+  <nav class="topnav">
+    <a href="#home" class="nav-link active" data-section="home">Home</a>
+    <a href="#vault" class="nav-link" data-section="vault">Character Vault</a>
+    <a href="#missions" class="nav-link" data-section="missions">Mission Board</a>
+    <a href="#suits" class="nav-link" data-section="suits">Suit Upgrades</a>
+  </nav>
+  <div class="status-pill">
+    <span class="pulse-dot"></span> Multiverse link stable
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HOME / HERO ================= -->
+  <section id="home" class="section hero-section active">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Web-Shooter OS v3.0</p>
+        <h1 class="hero-title">Every Earth<br>has a spider.</h1>
+        <p class="hero-sub">
+          Explore the character vault, run tonight's NYC patrol board, and gear up
+          from the suit archive — all wired to a live backend.
+        </p>
+        <div class="hero-actions">
+          <a href="#vault" class="primary-btn nav-link" data-section="vault">Open Character Vault</a>
+          <a href="#missions" class="ghost-btn nav-link" data-section="missions">View Mission Board</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong id="stat-characters">–</strong><span>Catalogued spiders</span></div>
+          <div class="stat"><strong id="stat-missions">–</strong><span>Active patrols</span></div>
+          <div class="stat"><strong id="stat-suits">–</strong><span>Suits archived</span></div>
+        </div>
+        <div class="quote-portal" aria-live="polite">
+          <span class="quote-label">Multiverse transmission</span>
+          <blockquote id="quote-text"></blockquote>
+          <a class="reel-cta" data-instagram-link target="_blank" rel="noreferrer">🔥 Watch My Latest Reel on Instagram</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hex-frame">
+          <div class="hex-ring ring-1"></div>
+          <div class="hex-ring ring-2"></div>
+          <div class="spider-glyph">🕸</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHARACTER VAULT ================= -->
+  <section id="vault" class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-eyebrow">Live archive</p>
+        <h2 class="section-title">Character Vault</h2>
+      </div>
+    </div>
+
+    <div class="vault-controls">
+      <input id="search-input" type="text" placeholder="Search “Miles”, “Goblin”, “Ghost-Spider”…" aria-label="Search characters" />
+      <div class="filter-group" role="tablist" aria-label="Filter characters">
+        <button class="filter-btn active" data-role="">All</button>
+        <button class="filter-btn" data-role="hero">Heroes</button>
+        <button class="filter-btn" data-role="villain-variant">Villains &amp; Variants</button>
+      </div>
+    </div>
+
+    <div id="vault-grid" class="card-grid"></div>
+  </section>
+
+  <!-- ================= MISSIONS ================= -->
+  <section id="missions" class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-eyebrow">Live board</p>
+        <h2 class="section-title">NYC Patrol Missions</h2>
+      </div>
+      <button id="new-mission-btn" class="primary-btn">+ New mission</button>
+    </div>
+
+    <div class="mission-columns">
+      <div class="mission-column" data-status="Pending">
+        <div class="column-head"><span class="dot dot-pending"></span>Pending</div>
+        <div class="column-body" id="col-pending"></div>
+      </div>
+      <div class="mission-column" data-status="In Progress">
+        <div class="column-head"><span class="dot dot-progress"></span>In Progress</div>
+        <div class="column-body" id="col-progress"></div>
+      </div>
+      <div class="mission-column" data-status="Completed">
+        <div class="column-head"><span class="dot dot-done"></span>Completed</div>
+        <div class="column-body" id="col-completed"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUITS ================= -->
+  <section id="suits" class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-eyebrow">Tech archive</p>
+        <h2 class="section-title">Suit Upgrades Gallery</h2>
+      </div>
+    </div>
+    <div id="suits-grid" class="suit-grid"></div>
+  </section>
+
+</main>
+
+<canvas id="web-shooter-canvas" aria-hidden="true"></canvas>
+<div class="shooter-score" aria-live="polite">
+  <span class="score-kicker">Web hits</span>
+  <strong id="web-hit-count">0</strong>
+</div>
+
+<aside class="audio-widget" aria-label="Theme audio player">
+  <span class="audio-status"><span class="audio-dot"></span><span id="audio-label">Theme audio</span></span>
+  <div class="audio-controls">
+    <button id="audio-play" class="audio-btn" type="button" aria-label="Play theme audio">▶</button>
+    <button id="audio-mute" class="audio-btn" type="button" aria-label="Mute theme audio">🔊</button>
+  </div>
+  <audio id="theme-audio" loop preload="none"></audio>
+</aside>
+
+<a class="reel-bubble" data-instagram-link target="_blank" rel="noreferrer" aria-label="Open the latest Spidey Instagram reel">
+  <span class="reel-bubble-icon">◎</span>
+  <span><strong>New Spidey Code Reel Dropped!</strong><small>Tap to swing over</small></span>
+</a>
+
+<section class="feedback-panel" aria-labelledby="feedback-title">
+  <div>
+    <span class="section-eyebrow">Signal boost</span>
+    <h2 id="feedback-title">Rate the web-slinger experience</h2>
+    <p>Leave a quick field report for the next visitor.</p>
+  </div>
+  <form id="feedback-form">
+    <div class="star-picker" role="radiogroup" aria-label="Website rating">
+      <button type="button" class="star-btn" data-rating="1" aria-label="1 star">★</button>
+      <button type="button" class="star-btn" data-rating="2" aria-label="2 stars">★</button>
+      <button type="button" class="star-btn" data-rating="3" aria-label="3 stars">★</button>
+      <button type="button" class="star-btn" data-rating="4" aria-label="4 stars">★</button>
+      <button type="button" class="star-btn" data-rating="5" aria-label="5 stars">★</button>
+    </div>
+    <label class="sr-only" for="feedback-text">Quick feedback</label>
+    <textarea id="feedback-text" rows="2" maxlength="180" placeholder="What should we upgrade next?" required></textarea>
+    <button class="primary-btn" type="submit">Send field report</button>
+  </form>
+</section>
+
+<!-- ================= MISSION MODAL ================= -->
+<div id="mission-modal" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Log a new mission</h3>
+      <button id="modal-close" class="icon-btn" aria-label="Close">✕</button>
+    </div>
+    <form id="mission-form">
+      <label>Title
+        <input type="text" id="m-title" required placeholder="e.g. Rooftop chase near Times Square" />
+      </label>
+      <label>Location
+        <input type="text" id="m-location" required placeholder="e.g. Times Square, NYC" />
+      </label>
+      <div class="field-row">
+        <label>Threat level
+          <select id="m-threat">
+            <option>Low</option>
+            <option selected>Medium</option>
+            <option>High</option>
+            <option>Critical</option>
+          </select>
+        </label>
+        <label>Status
+          <select id="m-status">
+            <option selected>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+          </select>
+        </label>
+      </div>
+      <label>Notes
+        <textarea id="m-description" rows="3" placeholder="Optional briefing details"></textarea>
+      </label>
+      <button type="submit" class="primary-btn full">Add to board</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

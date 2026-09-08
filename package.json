@@ -1,0 +1,16 @@
+{
+  "name": "spideyverse-explorer",
+  "version": "1.0.0",
+  "description": "SpideyVerse Explorer & Mission Hub - a Spider-Man themed full-stack app with a character vault, patrol mission board (CRUD), and suit gallery.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "optionalNotes": "To swap the JSON-file store for MongoDB, add 'mongoose'; for MySQL, add 'mysql2'. See README.md > Swapping the database."
+}
